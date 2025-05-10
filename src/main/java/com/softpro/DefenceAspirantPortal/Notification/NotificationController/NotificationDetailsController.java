@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @Controller
 public class NotificationDetailsController {
@@ -25,20 +26,26 @@ public class NotificationDetailsController {
 
     @GetMapping("/add-notification")
     public String showNotificationForm(Model model) {
-        NotificationDetailsDto dto = new NotificationDetailsDto();
-        model.addAttribute("notificationDetailsDto", dto);
-        return "notification-form";
+        model.addAttribute("notificationDetailsDto", new NotificationDetailsDto());
+        return "notification/notification-form";
     }
 
     @PostMapping("/save-notification")
-    public String saveNotification(@Valid @ModelAttribute NotificationDetailsDto dto, BindingResult result, Model model) {
+    public String saveNotification(@Valid @ModelAttribute NotificationDetailsDto dto,
+                                   BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "notification-form";
+            return "notification/notification-form";
         }
 
-        // If no errors, save the notification details
         notificationDetailsService.saveNotificationDetails(dto);
-        return "redirect:/notifications";
+        return "redirect:/notification/notifications";
+    }
+
+    @GetMapping("/notifications")
+    public String showAllNotifications(Model model) {
+        List<NotificationDetailsDto> notifications = notificationDetailsService.getAllNotificationDetails();
+        model.addAttribute("notifications", notifications);
+        return "notification/notifications"; 
     }
 
     @GetMapping("/notification/{id}")
@@ -48,6 +55,6 @@ public class NotificationDetailsController {
             return "redirect:/notifications?error=notfound";
         }
         model.addAttribute("notificationDetails", dto);
-        return "notification/notification-details";
+        return "notification/notification-details"; // maps to templates/notification/notification-details.html
     }
 }
