@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10 section form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" th:href="@{/css/notification-form.css}" />
+
+</head>
+
+<body>
+<form th:action="@{/save-notification}" th:object="${notificationDetailsDto}" method="post" novalidate 
+      class="container mt-4">
+  <!-- Global Error Messages -->
+  <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger">
+    <ul class="mb-0">
+      <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+    </ul>
+  </div>
+
+<!-- Section 1 - Basic Exam Info -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Section 1: Basic Exam Info</h3>
+    </div>
+
+    <!-- Exam Title -->
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" id="basicExamInfoDto_examTitleEn" name="basicExamInfoDto.examTitleEn"
+                    class="form-control" th:field="*{basicExamInfoDto.examTitleEn}"
+                    placeholder="Enter exam title in English" />
+                <label for="basicExamInfoDto_examTitleEn"><i class="fas fa-heading me-2"></i>Exam Title (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examTitleEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.examTitleHi}"
+                    placeholder="Enter exam title in Hindi" />
+                <label><i class="fas fa-heading me-2"></i>Exam Title (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examTitleHi}"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="row g-4 mt-2">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{basicExamInfoDto.overviewEn}"
+                    placeholder="Enter overview in English" style="height: 100px"></textarea>
+                <label><i class="fas fa-align-left me-2"></i>Overview (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.overviewEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{basicExamInfoDto.overviewHi}"
+                    placeholder="Enter overview in Hindi" style="height: 100px"></textarea>
+                <label><i class="fas fa-align-left me-2"></i>Overview (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.overviewHi}"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conducting Authority -->
+    <div class="row g-4 mt-2">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.authorityEn}"
+                    placeholder="Enter conducting authority in English" />
+                <label><i class="fas fa-university me-2"></i>Conducting Authority (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.authorityHi}"
+                    placeholder="Enter conducting authority in Hindi" />
+                <label><i class="fas fa-university me-2"></i>Conducting Authority (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityHi}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        <!-- Exam Level -->
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.levelEn}"
+                    placeholder="Enter exam level in English" />
+                <label><i class="fas fa-layer-group me-2"></i>Exam Level (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.levelHi}"
+                    placeholder="Enter exam level in Hindi" />
+                <label><i class="fas fa-layer-group me-2"></i>Exam Level (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelHi}"></div>
+            </div>
+        </div>
+
+        <!-- Exam Type -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.typeEn}"
+                    placeholder="Enter exam type in English" />
+                <label><i class="fas fa-tag me-2"></i>Exam Type (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.typeHi}"
+                    placeholder="Enter exam type in Hindi" />
+                <label><i class="fas fa-tag me-2"></i>Exam Type (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeHi}"></div>
+            </div>
+        </div>
+
+        <!-- Exam Frequency -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.frequencyEn}"
+                    placeholder="Enter exam frequency in English" />
+                <label><i class="fas fa-sync-alt me-2"></i>Exam Frequency (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.frequencyHi}"
+                    placeholder="Enter exam frequency in Hindi" />
+                <label><i class="fas fa-sync-alt me-2"></i>Exam Frequency (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyHi}"></div>
+            </div>
+        </div>
+
+        <!-- Mode of Application -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.applicationModeEn}"
+                    placeholder="Enter mode of application in English" />
+                <label><i class="fas fa-laptop me-2"></i>Mode of Application (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.applicationModeHi}"
+                    placeholder="Enter mode of application in Hindi" />
+                <label><i class="fas fa-laptop me-2"></i>Mode of Application (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeHi}"></div>
+            </div>
+        </div>
+
+        <!-- Exam Mode -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.examModeEn}"
+                    placeholder="Enter exam mode in English" />
+                <label><i class="fas fa-desktop me-2"></i>Exam Mode (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{basicExamInfoDto.examModeHi}"
+                    placeholder="Enter exam mode in Hindi" />
+                <label><i class="fas fa-desktop me-2"></i>Exam Mode (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeHi}"></div>
+            </div>
+        </div>
+
+        <!-- Official Website -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="url" class="form-control" th:field="*{basicExamInfoDto.officialWebsiteEn}"
+                    placeholder="Enter official website in English" />
+                <label><i class="fas fa-globe me-2"></i>Official Website (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.officialWebsiteEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="url" class="form-control" th:field="*{basicExamInfoDto.officialWebsiteHi}"
+                    placeholder="Enter official website in Hindi" />
+                <label><i class="fas fa-globe me-2"></i>Official Website (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.officialWebsiteHi}"></div>
+            </div>
+        </div>
+
+        <!-- Notification PDF Links -->
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="url" class="form-control" th:field="*{basicExamInfoDto.notificationPdfLinkEn}"
+                    placeholder="Enter PDF link in English" />
+                <label><i class="fas fa-file-pdf me-2"></i>Notification PDF Link (English)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.notificationPdfLinkEn}"></div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="form-floating">
+                <input type="url" class="form-control" th:field="*{basicExamInfoDto.notificationPdfLinkHi}"
+                    placeholder="Enter PDF link in Hindi" />
+                <label><i class="fas fa-file-pdf me-2"></i>Notification PDF Link (Hindi)</label>
+                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.notificationPdfLinkHi}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section 2 - Important Dates -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-info text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Important Dates</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Application Dates -->
+            <div class="form-floating">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.applicationStartDate}" 
+                       placeholder="Select start date"/>
+                <label><i class="fas fa-play-circle me-2"></i>Application Start Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.applicationStartDate}"></div>
+            </div>
+
+            <div class="form-floating mt-3">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.applicationEndDate}" 
+                       placeholder="Select end date"/>
+                <label><i class="fas fa-stop-circle me-2"></i>Application End Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.applicationEndDate}"></div>
+            </div>
+
+            <!-- Correction Window -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{importantDatesDto.applicationCorrectionWindow}"
+                       placeholder="Enter date range"/>
+                <label><i class="fas fa-edit me-2"></i>Application Correction Window</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.applicationCorrectionWindow}"></div>
+            </div>
+
+            <!-- Admit Card -->
+            <div class="form-floating mt-3">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.admitCardDate}" 
+                       placeholder="Select admit card date"/>
+                <label><i class="fas fa-file-invoice me-2"></i>Admit Card Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.admitCardDate}"></div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Exam Dates -->
+            <div class="form-floating">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.writtenExamDate}" 
+                       placeholder="Select exam date"/>
+                <label><i class="fas fa-pencil-alt me-2"></i>Written Exam Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.writtenExamDate}"></div>
+            </div>
+
+            <div class="form-floating mt-3">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.resultDate}" 
+                       placeholder="Select result date"/>
+                <label><i class="fas fa-chart-bar me-2"></i>Result Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.resultDate}"></div>
+            </div>
+
+            <!-- SSB Interview -->
+            <div class="form-floating mt-3">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.ssbInterviewStart}" 
+                       placeholder="Select interview date"/>
+                <label><i class="fas fa-handshake me-2"></i>SSB Interview Start Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.ssbInterviewStart}"></div>
+            </div>
+
+            <!-- Merit List -->
+            <div class="form-floating mt-3">
+                <input type="date" class="form-control" th:field="*{importantDatesDto.finalMeritListDate}" 
+                       placeholder="Select merit list date"/>
+                <label><i class="fas fa-trophy me-2"></i>Final Merit List Date</label>
+                <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.finalMeritListDate}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section 3 - Eligibility Criteria -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-purple text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-clipboard-check me-2"></i>Section 3: Eligibility Criteria</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- English Column -->
+        <div class="col-md-6">
+            <!-- Nationality -->
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{eligibilityCriteriaDto.nationalityEn}"
+                    placeholder="Enter nationality in English" />
+                <label><i class="fas fa-globe me-2"></i>Nationality (English)</label>
+            </div>
+
+            <!-- Age Limit -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.ageLimitEn}" 
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-calendar-alt me-2"></i>Age Limit (English)</label>
+            </div>
+
+            <!-- Gender Eligibility -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.genderEligibilityEn}"
+                    placeholder="One per line" style="height: 80px"></textarea>
+                <label><i class="fas fa-venus-mars me-2"></i>Gender Eligibility (English)</label>
+            </div>
+
+            <!-- Educational Qualifications -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.educationalQualificationsEn}"
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-graduation-cap me-2"></i>Educational Qualifications (English)</label>
+            </div>
+
+            <!-- Physical Standards -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.physicalStandardsEn}"
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-running me-2"></i>Physical Standards (English)</label>
+            </div>
+
+            <!-- Marital Status -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{eligibilityCriteriaDto.maritalStatusEn}"
+                    placeholder="Enter marital status in English" />
+                <label><i class="fas fa-heart me-2"></i>Marital Status (English)</label>
+            </div>
+
+            <!-- Height Requirement -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.heightRequirementEn}"
+                    placeholder="One per line" style="height: 80px"></textarea>
+                <label><i class="fas fa-ruler-vertical me-2"></i>Height Requirement (English)</label>
+            </div>
+        </div>
+
+        <!-- Hindi Column -->
+        <div class="col-md-6">
+            <!-- Nationality -->
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{eligibilityCriteriaDto.nationalityHi}"
+                    placeholder="Enter nationality in Hindi" />
+                <label><i class="fas fa-globe me-2"></i>Nationality (Hindi)</label>
+            </div>
+
+            <!-- Age Limit -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.ageLimitHi}" 
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-calendar-alt me-2"></i>Age Limit (Hindi)</label>
+            </div>
+
+            <!-- Gender Eligibility -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.genderEligibilityHi}"
+                    placeholder="One per line" style="height: 80px"></textarea>
+                <label><i class="fas fa-venus-mars me-2"></i>Gender Eligibility (Hindi)</label>
+            </div>
+
+            <!-- Educational Qualifications -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.educationalQualificationsHi}"
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-graduation-cap me-2"></i>Educational Qualifications (Hindi)</label>
+            </div>
+
+            <!-- Physical Standards -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.physicalStandardsHi}"
+                    placeholder="One per line" style="height: 100px"></textarea>
+                <label><i class="fas fa-running me-2"></i>Physical Standards (Hindi)</label>
+            </div>
+
+            <!-- Marital Status -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{eligibilityCriteriaDto.maritalStatusHi}"
+                    placeholder="Enter marital status in Hindi" />
+                <label><i class="fas fa-heart me-2"></i>Marital Status (Hindi)</label>
+            </div>
+
+            <!-- Height Requirement -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{eligibilityCriteriaDto.heightRequirementHi}"
+                    placeholder="One per line" style="height: 80px"></textarea>
+                <label><i class="fas fa-ruler-vertical me-2"></i>Height Requirement (Hindi)</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Section 4 - Vacancy Details -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-orange text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-briefcase me-2"></i>Section 4: Vacancy Details</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Total Vacancies -->
+            <div class="form-floating">
+                <input type="number" class="form-control" th:field="*{vacancyDetailsDto.totalVacancies}"
+                    placeholder="Enter total vacancies" />
+                <label><i class="fas fa-hashtag me-2"></i>Total Vacancies</label>
+            </div>
+
+            <!-- Post-wise Vacancies -->
+            <div class="mt-4">
+                <h5 class="mb-3"><i class="fas fa-list-ol me-2"></i>Post-wise Vacancies</h5>
+                <div id="postWiseContainer" class="border p-3 rounded-3">
+                    <div class="row g-2 mb-2" th:each="entry, stat : *{vacancyDetailsDto.postWiseVacancy}">
+                        <div class="col-7">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light"
+                                    th:field="*{vacancyDetailsDto.postWiseVacancy[__${entry.key}__]}" 
+                                    th:value="${entry.key}" readonly />
+                                <label>Post Name</label>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-floating">
+                                <input type="number" class="form-control"
+                                    th:field="*{vacancyDetailsDto.postWiseVacancy[__${entry.key}__]}" 
+                                    th:value="${entry.value}" placeholder="Count" />
+                                <label>Vacancies</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Category-wise Vacancies -->
+            <div class="mt-4">
+                <h5 class="mb-3"><i class="fas fa-layer-group me-2"></i>Category-wise Vacancies</h5>
+                <div id="categoryWiseContainer" class="border p-3 rounded-3">
+                    <div class="row g-2 mb-2" th:each="entry, stat : *{vacancyDetailsDto.categoryWiseVacancy}">
+                        <div class="col-7">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light"
+                                    th:field="*{vacancyDetailsDto.categoryWiseVacancy[__${entry.key}__]}" 
+                                    th:value="${entry.key}" readonly />
+                                <label>Category</label>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-floating">
+                                <input type="number" class="form-control"
+                                    th:field="*{vacancyDetailsDto.categoryWiseVacancy[__${entry.key}__]}" 
+                                    th:value="${entry.value}" placeholder="Count" />
+                                <label>Vacancies</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section 5 - Application Fee -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-green text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-money-bill-wave me-2"></i>Section 5: Application Fee</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Fee Amount -->
+            <div class="form-floating">
+                <input type="number" class="form-control" th:field="*{applicationFeeDto.feeAmount}"
+                    placeholder="Enter fee amount" />
+                <label><i class="fas fa-rupee-sign me-2"></i>Fee Amount</label>
+            </div>
+
+            <!-- Payment Mode -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{applicationFeeDto.paymentMode}"
+                    placeholder="Enter payment mode" />
+                <label><i class="fas fa-credit-card me-2"></i>Payment Mode</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <div class="category-wise-fee">
+                <h5 class="mb-3"><i class="fas fa-list-alt me-2"></i>Category-wise Fee</h5>
+                <div id="categoryWiseFeeContainer" class="border p-3 rounded-3">
+                    <div class="row g-2 mb-2" th:each="entry, stat : *{applicationFeeDto.categoryWiseFee}">
+                        <div class="col-7">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light"
+                                    th:field="*{applicationFeeDto.categoryWiseFee[__${entry.key}__]}" 
+                                    th:value="${entry.key}" readonly />
+                                <label>Category</label>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-floating">
+                                <input type="number" class="form-control"
+                                    th:field="*{applicationFeeDto.categoryWiseFee[__${entry.key}__]}" 
+                                    th:value="${entry.value}" placeholder="Amount" />
+                                <label>Amount</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Section 6 - Selection Process -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-indigo text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Section 6: Selection Process</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Written Test -->
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{selectionProcessDto.writtenTest}"
+                    placeholder="Enter details for Written Test" />
+                <label><i class="fas fa-pencil-alt me-2"></i>Stage 1: Written Test</label>
+            </div>
+
+            <!-- SSB Interview -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{selectionProcessDto.ssbInterview}"
+                    placeholder="Enter details for SSB Interview" />
+                <label><i class="fas fa-handshake me-2"></i>Stage 2: SSB Interview</label>
+            </div>
+
+            <!-- Document Verification -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{selectionProcessDto.documentVerification}"
+                    placeholder="Enter details for Document Verification" />
+                <label><i class="fas fa-file-check me-2"></i>Stage 3: Document Verification</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Medical Examination -->
+            <div class="form-floating">
+                <input type="text" class="form-control" th:field="*{selectionProcessDto.medicalExamination}"
+                    placeholder="Enter details for Medical Examination" />
+                <label><i class="fas fa-stethoscope me-2"></i>Stage 4: Medical Examination</label>
+            </div>
+
+            <!-- Final Merit -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{selectionProcessDto.finalMerit}"
+                    placeholder="Enter details for Final Merit" />
+                <label><i class="fas fa-trophy me-2"></i>Stage 5: Final Merit</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 7 - Exam Pattern -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-blue text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-clipboard-question me-2"></i>Section 7: Exam Pattern</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Number of Papers -->
+            <div class="form-floating">
+                <input type="number" class="form-control" th:field="*{examPatternDto.numberOfPapers}"
+                    placeholder="Enter number of papers" />
+                <label><i class="fas fa-file-alt me-2"></i>Number of Papers</label>
+            </div>
+
+            <!-- Subject-wise Details -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{examPatternDto.subjectWisePaperDetails}"
+                    placeholder="Enter subject-wise details" style="height: 120px"></textarea>
+                <label><i class="fas fa-book-open me-2"></i>Subject-wise Paper Details</label>
+            </div>
+
+            <!-- Duration -->
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" th:field="*{examPatternDto.durationOfEachPaper}"
+                    placeholder="Enter duration" />
+                <label><i class="fas fa-clock me-2"></i>Duration of Each Paper</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Total Marks -->
+            <div class="form-floating">
+                <input type="number" class="form-control" th:field="*{examPatternDto.totalMarks}"
+                    placeholder="Enter total marks" />
+                <label><i class="fas fa-percentage me-2"></i>Total Marks</label>
+            </div>
+
+            <!-- Negative Marking -->
+            <div class="form-check form-switch mt-4 ps-5">
+                <input class="form-check-input" type="checkbox" role="switch" 
+                    th:field="*{examPatternDto.negativeMarking}" id="negativeMarking" />
+                <label class="form-check-label h5" for="negativeMarking">
+                    <i class="fas fa-minus-circle me-2"></i>Negative Marking
+                </label>
+            </div>
+
+            <!-- Qualifying Marks -->
+            <div class="form-floating mt-3">
+                <input type="number" class="form-control" th:field="*{examPatternDto.minimumQualifyingMarks}"
+                    placeholder="Enter qualifying marks" />
+                <label><i class="fas fa-chart-line me-2"></i>Minimum Qualifying Marks</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 8 - Syllabus -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-teal text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-book me-2"></i>Section 8: Syllabus</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- English -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{syllabusDto.englishTopics}" 
+                    placeholder="English topics" style="height: 100px"></textarea>
+                <label><i class="fas fa-language me-2"></i>English Topics</label>
+            </div>
+
+            <!-- Mathematics -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{syllabusDto.mathematicsTopics}"
+                    placeholder="Mathematics topics" style="height: 100px"></textarea>
+                <label><i class="fas fa-calculator me-2"></i>Mathematics Topics</label>
+            </div>
+
+            <!-- General Knowledge -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{syllabusDto.generalKnowledgeTopics}"
+                    placeholder="GK topics" style="height: 100px"></textarea>
+                <label><i class="fas fa-globe-asia me-2"></i>General Knowledge Topics</label>
+            </div>
+
+            <!-- Reasoning -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{syllabusDto.reasoningTopics}"
+                    placeholder="Reasoning topics" style="height: 100px"></textarea>
+                <label><i class="fas fa-brain me-2"></i>Reasoning Topics</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Technical Subjects -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{syllabusDto.technicalSubjectsTopics}"
+                    placeholder="Technical topics" style="height: 100px"></textarea>
+                <label><i class="fas fa-microchip me-2"></i>Technical Subjects Topics</label>
+            </div>
+
+            <!-- PDF Link -->
+            <div class="form-floating mt-4">
+                <input type="url" class="form-control" th:field="*{syllabusDto.syllabusPdfLink}"
+                    placeholder="Enter PDF link" />
+                <label><i class="fas fa-file-pdf me-2"></i>Syllabus PDF Link</label>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Section 9 - Physical & Medical Standards -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-maroon text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-running me-2"></i>Section 9: Physical & Medical Standards</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Running Requirements -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{physicalMedicalStandardsDto.runningTimeAndDistance}"
+                    placeholder="Running requirements" style="height: 100px"></textarea>
+                <label><i class="fas fa-stopwatch me-2"></i>Running Time & Distance</label>
+            </div>
+
+            <!-- Physical Exercises -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{physicalMedicalStandardsDto.pushupsSitupsChinupsRequirements}"
+                    placeholder="Exercise requirements" style="height: 100px"></textarea>
+                <label><i class="fas fa-dumbbell me-2"></i>Pushups, Situps, Chinups</label>
+            </div>
+
+            <!-- Vision Policy -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{physicalMedicalStandardsDto.eyeSightColorBlindnessTattoosPolicy}"
+                    placeholder="Vision policy" style="height: 100px"></textarea>
+                <label><i class="fas fa-eye me-2"></i>Vision & Tattoos Policy</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Medical Tests -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{physicalMedicalStandardsDto.medicalTestsList}"
+                    placeholder="Medical tests" style="height: 100px"></textarea>
+                <label><i class="fas fa-file-medical me-2"></i>Medical Tests List</label>
+            </div>
+
+            <!-- PDF Link -->
+            <div class="form-floating mt-4">
+                <input type="url" class="form-control" th:field="*{physicalMedicalStandardsDto.physicalStandardsPdfLink}"
+                    placeholder="PDF link" />
+                <label><i class="fas fa-file-pdf me-2"></i>Physical Standards PDF Link</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 10 - Documents Required -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-purple text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-file-signature me-2"></i>Section 10: Documents Required</h3>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <!-- Photo Guidelines -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{documentsRequiredDto.photoSignatureGuidelines}"
+                    placeholder="Photo guidelines" style="height: 100px"></textarea>
+                <label><i class="fas fa-camera me-2"></i>Photo/Signature Guidelines</label>
+            </div>
+
+            <!-- ID Proof -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{documentsRequiredDto.idProofRequirements}"
+                    placeholder="ID requirements" style="height: 100px"></textarea>
+                <label><i class="fas fa-id-card me-2"></i>ID Proof Requirements</label>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <!-- Caste Certificate -->
+            <div class="form-floating">
+                <textarea class="form-control" th:field="*{documentsRequiredDto.casteCertificate}"
+                    placeholder="Caste certificate" style="height: 100px"></textarea>
+                <label><i class="fas fa-file-certificate me-2"></i>Caste Certificate</label>
+            </div>
+
+            <!-- Additional Documents -->
+            <div class="form-floating mt-3">
+                <textarea class="form-control" th:field="*{documentsRequiredDto.domicileNccSportsQuotaDocuments}"
+                    placeholder="Additional documents" style="height: 100px"></textarea>
+                <label><i class="fas fa-folder-plus me-2"></i>Additional Documents</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 11 - How to Apply -->
+<div class="form-container p-4 mb-5">
+    <!-- Section Header -->
+    <div class="section-header bg-navy text-white rounded-3 p-4 mb-4">
+        <h3 class="mb-0"><i class="fas fa-mouse-pointer me-2"></i>Section 11: How to Apply</h3>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="row g-4">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <!-- Step-by-Step -->
+                            <div class="form-floating">
+                                <textarea class="form-control" th:field="*{howToApplyDto.stepByStepProcedure}"
+                                    placeholder="Application steps" style="height: 200px"></textarea>
+                                <label><i class="fas fa-list-ol me-2"></i>Step-by-Step Procedure</label>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <!-- Demo Link -->
+                            <div class="form-floating">
+                                <input type="url" class="form-control" th:field="*{howToApplyDto.screenshotVisualDemoLink}"
+                                    placeholder="Demo link" />
+                                <label><i class="fas fa-link me-2"></i>Visual Demo Link</label>
+                            </div>
+
+                            <!-- Application Link -->
+                            <div class="form-floating mt-3">
+                                <input type="url" class="form-control" th:field="*{howToApplyDto.applicationPageLink}"
+                                    placeholder="Application link" />
+                                <label><i class="fas fa-external-link-alt me-2"></i>Application Page Link</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Form Submission Section -->
+<div class="form-action-buttons mt-5 pt-4 border-top">
+  <div class="d-flex justify-content-end gap-3 flex-wrap">
+    <button type="reset" class="btn btn-clear">
+      <i class="fas fa-eraser me-2"></i>Clear Form
+    </button>
+    <button type="submit" class="btn btn-save">
+      <i class="fas fa-save me-2"></i>Save Notification
+    </button>
+  </div>
+</div>
+</form>
+  <script >
+  </script>
+  </body>
+</html>

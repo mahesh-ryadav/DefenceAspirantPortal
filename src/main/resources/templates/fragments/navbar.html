@@ -1,0 +1,57 @@
+<!-- templates/fragments/navbar.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<div th:fragment="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm" style="background-color: #1e3a8a">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        Defense Aspirant Portal
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fw-semibold align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="/notifications">Notifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mocktests">Mock Tests</a></li>
+          <li class="nav-item"><a class="nav-link" href="#studymaterials">Study Materials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="examsDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Exams</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="examsDropdown">
+              <li><a class="dropdown-item" href="#">NDA</a></li>
+              <li><a class="dropdown-item" href="#">CDS</a></li>
+              <li><a class="dropdown-item" href="#">AFCAT</a></li>
+              <li><a class="dropdown-item" href="#">TES</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" sec:authorize="isAnonymous()">
+            <a class="nav-link btn btn-outline-dark ms-3" href="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item" sec:authorize="hasRole('ROLE_USER')">
+            <a class="nav-link btn btn-outline-light ms-3" href="/user/dashboard">User Dashboard</a>
+          </li>
+          <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+            <a class="nav-link btn btn-outline-warning ms-3" href="/admin/dashboard">Admin Dashboard</a>
+          </li>
+          <li class="nav-item" sec:authorize="isAuthenticated()">
+            <a class="nav-link btn btn-outline-light ms-3" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indian Defence Exam Notification Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            padding: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h2, h3 {
+            color: #0f4c75;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px #d1d5db;
+        }
+        .section-divider {
+            border-top: 3px solid #14B8A6;
+            margin: 3rem 0;
+            box-shadow: 0 2px 4px rgba(20, 184, 166, 0.4);
+        }
+        .info-list dt {
+            font-weight: 700;
+            color: #0f4c75;
+            font-size: 1.05rem;
+        }
+        .info-list dd {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #334155;
+        }
+        .timeline {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+            margin-left: 1rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: #14B8A6;
+            border-radius: 3px;
+            box-shadow: 0 0 8px #14B8A6;
+        }
+        .timeline-item {
+            position: relative;
+            margin-left: 50px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #0f4c75;
+            font-size: 1.1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: #0f4c75;
+            border-radius: 50%;
+            border: 5px solid #f9fafb;
+            box-shadow: 0 0 10px #0f4c75;
+        }
+        .faq-question {
+            font-weight: 700;
+            cursor: pointer;
+            color: #0f4c75;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #14B8A6;
+        }
+        .faq-answer {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-size: 1rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .btn-link {
+            color: #14B8A6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn-link:hover {
+            text-decoration: underline;
+            color: #0f4c75;
+        }
+        a.btn-link:focus {
+            outline: 2px solid #14B8A6;
+            outline-offset: 2px;
+        }
+    </style>
+    <script>
+        function toggleFaqAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>📝 Indian Defence Exam Notification – Detailed Page</h2>
+
+        <section>
+            <h3>🔹 Basic Exam Information</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Exam Title (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.examTitleHi : notificationDetails.examTitleEn}">NDA 2025</dd>
+
+                <dt class="col-sm-4">Overview (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.overviewHi : notificationDetails.overviewEn}">Overview text</dd>
+
+                <dt class="col-sm-4">Conducting Authority (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.authorityHi : notificationDetails.authorityEn}">UPSC</dd>
+
+                <dt class="col-sm-4">Exam Level (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.levelHi : notificationDetails.levelEn}">National</dd>
+
+                <dt class="col-sm-4">Exam Type (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.typeHi : notificationDetails.typeEn}">Written, SSB, Medical</dd>
+
+                <dt class="col-sm-4">Exam Frequency (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.frequencyHi : notificationDetails.frequencyEn}">Once a year</dd>
+
+                <dt class="col-sm-4">Mode of Application (English)</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.applicationModeHi : notificationDetails.applicationModeEn}">Online</dd>
+
+                <dt class="col-sm-4">Exam Mode</dt>
+                <dd class="col-sm-8" th:text="${notificationDetails.examModeEn}">Online / Offline</dd>
+
+                <dt class="col-sm-4">Official Website (English)</dt>
+                <dd class="col-sm-8"><a th:href="${notificationDetails.officialWebsiteEn}" target="_blank" class="btn-link">Visit Website</a></dd>
+
+                <dt class="col-sm-4">Notification PDF Link (English)</dt>
+                <dd class="col-sm-8"><a th:href="${notificationDetails.notificationPdfLinkEn}" target="_blank" class="btn-link">Download PDF</a></dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📆 Important Dates</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Notification Release Date</dt>
+                <dd class="col-sm-8">01 Jan 2025</dd>
+
+                <dt class="col-sm-4">Application Start Date</dt>
+                <dd class="col-sm-8">05 Jan 2025</dd>
+
+                <dt class="col-sm-4">Application End Date</dt>
+                <dd class="col-sm-8">25 Jan 2025</dd>
+
+                <dt class="col-sm-4">Application Correction Window</dt>
+                <dd class="col-sm-8">10-15 Jan 2025</dd>
+
+                <dt class="col-sm-4">Admit Card Release Date</dt>
+                <dd class="col-sm-8">10 Feb 2025</dd>
+
+                <dt class="col-sm-4">Written Exam Date</dt>
+                <dd class="col-sm-8">20 Feb 2025</dd>
+
+                <dt class="col-sm-4">Result Declaration Date</dt>
+                <dd class="col-sm-8">15 Mar 2025</dd>
+
+                <dt class="col-sm-4">SSB Interview Dates</dt>
+                <dd class="col-sm-8">April 2025</dd>
+
+                <dt class="col-sm-4">Final Merit List Date</dt>
+                <dd class="col-sm-8">May 2025</dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📋 Eligibility Criteria</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Nationality</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.nationalityHi : notificationDetails.nationalityEn}">Indian</dd>
+
+                <dt class="col-sm-4">Age Limit</dt>
+                <dd class="col-sm-8">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Gender</th>
+                                <th>Category</th>
+                                <th>Age Limit</th>
+                                <th>Relaxation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="ageLimit : ${notificationDetails.ageLimits}">
+                                <td th:text="${ageLimit.gender}">Male</td>
+                                <td th:text="${ageLimit.category}">General</td>
+                                <td th:text="${ageLimit.ageLimit}">16.5 to 19.5 years</td>
+                                <td th:text="${ageLimit.relaxation}">None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </dd>
+
+                <dt class="col-sm-4">Gender Eligibility</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.genderEligibilityHi : notificationDetails.genderEligibilityEn}">Male / Female</dd>
+
+                <dt class="col-sm-4">Educational Qualification</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.educationalQualificationHi : notificationDetails.educationalQualificationEn}">12th Pass / Appearing</dd>
+
+                <dt class="col-sm-4">Physical Standards</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.physicalStandardsHi : notificationDetails.physicalStandardsEn}">As per guidelines</dd>
+
+                <dt class="col-sm-4">Marital Status</dt>
+                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.maritalStatusHi : notificationDetails.maritalStatusEn}">Unmarried</dd>
+
+                <dt class="col-sm-4">Minimum Height / Chest / Weight</dt>
+                <dd class="col-sm-8">
+                    <ul>
+                        <li th:each="item : ${notificationDetails.minHeightChestWeight}" th:text="${item}">As applicable</li>
+                    </ul>
+                </dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📑 Vacancy Details</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Total Number of Vacancies</dt>
+                <dd class="col-sm-8">1000</dd>
+
+                <dt class="col-sm-4">Category-Wise Vacancy</dt>
+                <dd class="col-sm-8">UR: 500, OBC: 300, SC: 150, ST: 50</dd>
+
+                <dt class="col-sm-4">Post/Branch/Trade-Wise Vacancy</dt>
+                <dd class="col-sm-8">Technical, Non-Technical, Ground Duty</dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>💰 Application Fee</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Fee Amount</dt>
+                <dd class="col-sm-8">₹ 200</dd>
+
+                <dt class="col-sm-4">Category-wise Fee</dt>
+                <dd class="col-sm-8">UR/OBC/SC/ST/Female</dd>
+
+                <dt class="col-sm-4">Payment Mode</dt>
+                <dd class="col-sm-8">Online – Debit/Credit/UPI/NetBanking</dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>🧭 Selection Process</h3>
+            <ol class="timeline">
+                <li class="timeline-item">Stage 1: Written Test</li>
+                <li class="timeline-item">Stage 2: SSB Interview</li>
+                <li class="timeline-item">Stage 3: Document Verification</li>
+                <li class="timeline-item">Stage 4: Medical Examination</li>
+                <li class="timeline-item">Stage 5: Final Merit</li>
+            </ol>
+            <p>Add flowchart or visual timeline if needed</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📚 Exam Pattern</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Number of Papers</dt>
+                <dd class="col-sm-8">2</dd>
+
+                <dt class="col-sm-4">Subject-wise Paper Details</dt>
+                <dd class="col-sm-8">English, Mathematics</dd>
+
+                <dt class="col-sm-4">Duration of Each Paper</dt>
+                <dd class="col-sm-8">2 hours</dd>
+
+                <dt class="col-sm-4">Total Marks</dt>
+                <dd class="col-sm-8">600</dd>
+
+                <dt class="col-sm-4">Negative Marking</dt>
+                <dd class="col-sm-8">Yes</dd>
+
+                <dt class="col-sm-4">Minimum Qualifying Marks</dt>
+                <dd class="col-sm-8">40%</dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📖 Syllabus</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">English</dt>
+                <dd class="col-sm-8">Grammar, Comprehension</dd>
+
+                <dt class="col-sm-4">Mathematics</dt>
+                <dd class="col-sm-8">Algebra, Geometry</dd>
+
+                <dt class="col-sm-4">General Knowledge</dt>
+                <dd class="col-sm-8">Current Affairs, History</dd>
+
+                <dt class="col-sm-4">Reasoning</dt>
+                <dd class="col-sm-8">Logical Reasoning, Puzzles</dd>
+
+                <dt class="col-sm-4">Technical Subjects</dt>
+                <dd class="col-sm-8">Physics, Chemistry</dd>
+
+                <dt class="col-sm-4">Download Syllabus PDF</dt>
+                <dd class="col-sm-8"><a href="#" target="_blank" class="btn-link">Download PDF</a></dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>🛠️ Physical & Medical Standards</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Running Time & Distance</dt>
+                <dd class="col-sm-8">5 km in 25 minutes</dd>
+
+                <dt class="col-sm-4">Pushups, Situps, Chinups Requirements</dt>
+                <dd class="col-sm-8">20 pushups, 30 situps</dd>
+
+                <dt class="col-sm-4">Eye Sight, Color Blindness, Tattoos Policy</dt>
+                <dd class="col-sm-8">Normal eyesight required</dd>
+
+                <dt class="col-sm-4">Medical Tests List</dt>
+                <dd class="col-sm-8">Blood test, X-ray</dd>
+
+                <dt class="col-sm-4">Download Physical Standards PDF</dt>
+                <dd class="col-sm-8"><a href="#" target="_blank" class="btn-link">Download PDF</a></dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📤 Documents Required</h3>
+            <dl class="row info-list">
+                <dt class="col-sm-4">Photo/Signature Guidelines</dt>
+                <dd class="col-sm-8">Passport size photo, scanned signature</dd>
+
+                <dt class="col-sm-4">ID Proof Requirements</dt>
+                <dd class="col-sm-8">Aadhar Card, Voter ID</dd>
+
+                <dt class="col-sm-4">Caste Certificate</dt>
+                <dd class="col-sm-8">If applicable</dd>
+
+                <dt class="col-sm-4">Domicile / NCC Certificate / Sports Quota Documents</dt>
+                <dd class="col-sm-8">If applicable</dd>
+            </dl>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>🧾 How to Apply</h3>
+            <ol>
+                <li>Step 1: Visit official website</li>
+                <li>Step 2: Register online</li>
+                <li>Step 3: Fill application form</li>
+                <li>Step 4: Upload documents</li>
+                <li>Step 5: Submit application</li>
+            </ol>
+            <p><a href="#" target="_blank" class="btn-link">Go to Application Page</a></p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>📌 Important Links</h3>
+            <ul>
+                <li><a href="#" target="_blank" class="btn-link">Notification PDF</a></li>
+                <li><a href="#" target="_blank" class="btn-link">Apply Online Link</a></li>
+                <li><a href="#" target="_blank" class="btn-link">Admit Card Download</a></li>
+                <li><a href="https://www.upsc.gov.in" target="_blank" class="btn-link">Official Website</a></li>
+                <li><a href="#" target="_blank" class="btn-link">Previous Year Papers</a></li>
+                <li><a href="#" target="_blank" class="btn-link">FAQs Section</a></li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section>
+            <h3>💬 FAQs Section</h3>
+            <div>
+                <div>
+                    <p class="faq-question" onclick="toggleFaqAnswer('faq1')">Q1: What is the eligibility criteria?</p>
+                    <p id="faq1" class="faq-answer">A1: Eligibility criteria include nationality, age limit, educational qualification, and physical standards.</p>
+                </div>
+                <div>
+                    <p class="faq-question" onclick="toggleFaqAnswer('faq2')">Q2: How to apply online?</p>
+                    <p id="faq2" class="faq-answer">A2: Visit the official website and follow the step-by-step application process.</p>
+                </div>
+                <!-- Add more FAQs as needed -->
+            </div>
+        </section>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

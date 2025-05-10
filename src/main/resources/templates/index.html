@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Defense Aspirant Portal - Landing Page</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <!-- navber-->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+    <!-- Announcements / News Ticker Section -->
+    <section class="bg-warning text-dark py-2">
+      <div class="container d-flex align-items-center">
+        <strong class="me-3">Announcements:</strong>
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="6"
+          onmouseover="this.stop();"
+          onmouseout="this.start();"
+        >
+          UPSC Exam Schedule Released | New Study Materials Available | Upcoming
+          Webinar on Defense Careers - Register Now!
+        </marquee>
+      </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+      <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Prepare for Your Defense Career</h1>
+        <p class="lead mb-4">
+          Your ultimate portal for Indian defense exam notifications, study
+          materials, mock tests, and expert guidance.
+        </p>
+        <a href="#signup" class="btn btn-primary btn-lg px-4">Get Started</a>
+      </div>
+    </section>
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2">
+            <div class="feature-card h-100">
+              <div class="feature-icon"><i class="bi bi-bullseye"></i></div>
+              <div class="feature-title">Exam Notifications</div>
+              <div class="feature-desc">
+                Stay updated with the latest Indian defense exam notifications
+                and deadlines.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2">
+            <div class="feature-card h-100">
+              <div class="feature-icon"><i class="bi bi-journal-text"></i></div>
+              <div class="feature-title">Study Materials</div>
+              <div class="feature-desc">
+                Access comprehensive study materials curated by experts to boost
+                your preparation.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2">
+            <div class="feature-card h-100">
+              <div class="feature-icon">
+                <i class="bi bi-pencil-square"></i>
+              </div>
+              <div class="feature-title">Mock Tests</div>
+              <div class="feature-desc">
+                Practice with mock tests designed to simulate the actual exam
+                environment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / News Updates Section -->
+    <section
+      id="blog"
+      class="features-section bg-light"
+      aria-label="Blog and News Updates"
+    >
+      <div class="container">
+        <h2 class="mb-4 d-flex justify-content-between align-items-center">
+          Latest News & Articles
+          <a href="#blog" class="btn btn-link">View More</a>
+        </h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="feature-card h-100" style="min-height: 250px">
+              <div class="feature-title">New Exam Dates Announced</div>
+              <div class="feature-desc">
+                Stay informed about the latest exam schedules and deadlines.
+              </div>
+              <a href="#" class="view-details">Read More</a>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="feature-card h-100" style="min-height: 250px">
+              <div class="feature-title">Tips for SSB Interview</div>
+              <div class="feature-desc">
+                Expert advice to help you prepare and succeed in your SSB
+                interview.
+              </div>
+              <a href="#" class="view-details">Read More</a>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="feature-card h-100" style="min-height: 250px">
+              <div class="feature-title">How to Crack NDA Exam</div>
+              <div class="feature-desc">
+                Comprehensive guide and strategies for NDA exam preparation.
+              </div>
+              <a href="#" class="view-details">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section id="notifications" class="features-section">
+      <div class="container">
+        <h2 class="mb-4 d-flex justify-content-between align-items-center">
+          Recent Notifications
+          <a href="#notifications" class="btn btn-link">View More</a>
+        </h2>
+        <div
+          id="notificationsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="6000"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                  <div class="feature-card h-100" style="min-height: 250px">
+                    <div class="feature-title">Notification 1</div>
+                    <div class="feature-desc">
+                      Details about notification 1.
+                    </div>
+                    <a href="#notification1" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                  <div class="feature-card h-100" style="min-height: 250px">
+                    <div class="feature-title">Notification 2</div>
+                    <div class="feature-desc">
+                      Details about notification 2.
+                    </div>
+                    <a href="#notification2" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                  <div class="feature-card h-100" style="min-height: 250px">
+                    <div class="feature-title">Notification 3</div>
+                    <div class="feature-desc">
+                      Details about notification 3.
+                    </div>
+                    <a href="#notification3" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Notification 4</div>
+                    <div class="feature-desc">
+                      Details about notification 4.
+                    </div>
+                    <a href="#notification4" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Notification 5</div>
+                    <div class="feature-desc">
+                      Details about notification 5.
+                    </div>
+                    <a href="#notification5" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Notification 6</div>
+                    <div class="feature-desc">
+                      Details about notification 6.
+                    </div>
+                    <a href="#notification6" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#notificationsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#notificationsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mock Tests Section -->
+    <section id="mocktests" class="features-section">
+      <div class="container">
+        <h2 class="mb-4 d-flex justify-content-between align-items-center">
+          Recent Mock Tests
+          <a href="#mocktests" class="btn btn-link">View More</a>
+        </h2>
+        <div
+          id="mocktestsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="6000"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 1</div>
+                    <div class="feature-desc">Details about mock test 1.</div>
+                    <a href="#mocktest1" class="view-details">View Details</a>
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 2</div>
+                    <div class="feature-desc">Details about mock test 2.</div>
+                    <a href="#mocktest2" class="view-details">View Details</a>
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 3</div>
+                    <div class="feature-desc">Details about mock test 3.</div>
+                    <a href="#mocktest3" class="view-details">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 4</div>
+                    <div class="feature-desc">Details about mock test 4.</div>
+                    <a href="#mocktest4" class="view-details">View Details</a>
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 5</div>
+                    <div class="feature-desc">Details about mock test 5.</div>
+                    <a href="#mocktest5" class="view-details">View Details</a>
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Mock Test 6</div>
+                    <div class="feature-desc">Details about mock test 6.</div>
+                    <a href="#mocktest6" class="view-details">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#mocktestsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#mocktestsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Materials Section -->
+    <section id="studymaterials" class="features-section">
+      <div class="container">
+        <h2 class="mb-4 d-flex justify-content-between align-items-center">
+          Recent Study Materials
+          <a href="#studymaterials" class="btn btn-link">View More</a>
+        </h2>
+        <div
+          id="studymaterialsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="6000"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 1</div>
+                    <div class="feature-desc">
+                      Details about study material 1.
+                    </div>
+                    <a href="#studymaterial1" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 2</div>
+                    <div class="feature-desc">
+                      Details about study material 2.
+                    </div>
+                    <a href="#studymaterial2" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 3</div>
+                    <div class="feature-desc">
+                      Details about study material 3.
+                    </div>
+                    <a href="#studymaterial3" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-4 justify-content-center">
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 4</div>
+                    <div class="feature-desc">
+                      Details about study material 4.
+                    </div>
+                    <a href="#studymaterial4" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 5</div>
+                    <div class="feature-desc">
+                      Details about study material 5.
+                    </div>
+                    <a href="#studymaterial5" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-4">
+                  <div class="feature-card h-100">
+                    <div class="feature-title">Study Material 6</div>
+                    <div class="feature-desc">
+                      Details about study material 6.
+                    </div>
+                    <a href="#studymaterial6" class="view-details"
+                      >View Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#studymaterialsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#studymaterialsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+
+    <!-- Video Introduction Section -->
+    <section
+      id="video-intro"
+      class="features-section bg-light"
+      aria-label="Video Introduction"
+    >
+      <div class="container text-center">
+        <h2 class="mb-4">Learn More About Our Portal</h2>
+        <div class="ratio ratio-16x9 mx-auto" style="max-width: 800px">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Introduction Video"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section
+      id="faq"
+      class="features-section"
+      aria-label="Frequently Asked Questions"
+    >
+      <div class="container">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqHeadingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseOne"
+                aria-expanded="true"
+                aria-controls="faqCollapseOne"
+              >
+                How do I register on the portal?
+              </button>
+            </h3>
+            <div
+              id="faqCollapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="faqHeadingOne"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Click on the Sign Up button on the top right and fill in the
+                registration form.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqHeadingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseTwo"
+                aria-expanded="false"
+                aria-controls="faqCollapseTwo"
+              >
+                Are the study materials free?
+              </button>
+            </h3>
+            <div
+              id="faqCollapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeadingTwo"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Yes, all study materials available on the portal are free for
+                registered users.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faqHeadingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faqCollapseThree"
+                aria-expanded="false"
+                aria-controls="faqCollapseThree"
+              >
+                How often are mock tests updated?
+              </button>
+            </h3>
+            <div
+              id="faqCollapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeadingThree"
+              data-bs-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Mock tests are updated monthly to reflect the latest exam
+                patterns.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section
+      id="newsletter"
+      class="features-section bg-light"
+      aria-label="Newsletter Subscription"
+    >
+      <div class="container text-center">
+        <h2 class="mb-4">Subscribe to Our Newsletter</h2>
+        <form
+          class="row g-3 justify-content-center"
+          aria-label="Newsletter subscription form"
+        >
+          <div class="col-auto">
+            <label for="newsletterEmail" class="visually-hidden"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="newsletterEmail"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Social Media Links Section -->
+    <section
+      id="social-media"
+      class="features-section text-center"
+      aria-label="Social Media Links"
+    >
+      <div class="container">
+        <h2 class="mb-4">Connect with Us</h2>
+        <a href="#" class="btn btn-outline-primary me-2" aria-label="Facebook"
+          ><i class="bi bi-facebook"></i
+        ></a>
+        <a href="#" class="btn btn-outline-info me-2" aria-label="Twitter"
+          ><i class="bi bi-twitter"></i
+        ></a>
+        <a href="#" class="btn btn-outline-danger me-2" aria-label="YouTube"
+          ><i class="bi bi-youtube"></i
+        ></a>
+        <a href="#" class="btn btn-outline-primary me-2" aria-label="LinkedIn"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+      </div>
+    </section>
+
+    <style>
+      a:focus,
+      button:focus,
+      input:focus,
+      textarea:focus {
+        outline: 3px solid var(--khaki);
+        outline-offset: 2px;
+      }
+    </style>
+
+    <!-- About Section -->
+    <section
+      id="about"
+      class="features-section bg-light"
+      style="background-color: var(--off-white)"
+    >
+      <div class="container">
+        <h2 class="text-center mb-4">About Defense Aspirant Portal</h2>
+        <p
+          class="text-center"
+          style="max-width: 700px; margin: 0 auto; color: var(--charcoal)"
+        >
+          Defense Aspirant Portal is dedicated to helping aspirants prepare
+          effectively for Indian defense exams. We provide timely notifications,
+          quality study resources, and practice tests to ensure you are
+          exam-ready.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="features-section">
+      <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <form class="mx-auto" style="max-width: 600px">
+          <div class="mb-3">
+            <label for="nameInput" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameInput"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailInput"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="messageInput" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="messageInput"
+              rows="4"
+              placeholder="Your message here..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      &copy; 2024 Defense Aspirant Portal. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
