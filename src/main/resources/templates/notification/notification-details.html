@@ -1,426 +1,294 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Indian Defence Exam Notification Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-            padding: 30px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        h2, h3 {
-            color: #0f4c75;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 1px 1px 2px #d1d5db;
-        }
-        .section-divider {
-            border-top: 3px solid #14B8A6;
-            margin: 3rem 0;
-            box-shadow: 0 2px 4px rgba(20, 184, 166, 0.4);
-        }
-        .info-list dt {
-            font-weight: 700;
-            color: #0f4c75;
-            font-size: 1.05rem;
-        }
-        .info-list dd {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            color: #334155;
-        }
-        .timeline {
-            list-style: none;
-            padding-left: 0;
-            position: relative;
-            margin-left: 1rem;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: #14B8A6;
-            border-radius: 3px;
-            box-shadow: 0 0 8px #14B8A6;
-        }
-        .timeline-item {
-            position: relative;
-            margin-left: 50px;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            color: #0f4c75;
-            font-size: 1.1rem;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -40px;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            background: #0f4c75;
-            border-radius: 50%;
-            border: 5px solid #f9fafb;
-            box-shadow: 0 0 10px #0f4c75;
-        }
-        .faq-question {
-            font-weight: 700;
-            cursor: pointer;
-            color: #0f4c75;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        .faq-question:hover {
-            color: #14B8A6;
-        }
-        .faq-answer {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: none;
-            font-size: 1rem;
-            color: #334155;
-            line-height: 1.5;
-        }
-        .btn-link {
-            color: #14B8A6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .btn-link:hover {
-            text-decoration: underline;
-            color: #0f4c75;
-        }
-        a.btn-link:focus {
-            outline: 2px solid #14B8A6;
-            outline-offset: 2px;
-        }
-    </style>
-    <script>
-        function toggleFaqAnswer(id) {
-            const answer = document.getElementById(id);
-            if (answer.style.display === 'none' || answer.style.display === '') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
-            }
-        }
-    </script>
+    <title>Notification Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="container">
-        <h2>📝 Indian Defence Exam Notification – Detailed Page</h2>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/notifications">Notification System</a>
+        </div>
+    </nav>
 
-        <section>
-            <h3>🔹 Basic Exam Information</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Exam Title (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.examTitleHi : notificationDetails.examTitleEn}">NDA 2025</dd>
+    <div class="container my-5">
+        <h1 class="mb-4" th:text="${notificationDetails.basicExamInfoDto.examTitleEn}">Notification Title</h1>
 
-                <dt class="col-sm-4">Overview (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.overviewHi : notificationDetails.overviewEn}">Overview text</dd>
+        <!-- Basic Exam Info -->
+        <section class="mb-4">
+            <h3>Basic Exam Info</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Exam Title (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.examTitleEn}"></dd>
 
-                <dt class="col-sm-4">Conducting Authority (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.authorityHi : notificationDetails.authorityEn}">UPSC</dd>
+                <dt class="col-sm-3">Exam Title (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.examTitleHi}"></dd>
 
-                <dt class="col-sm-4">Exam Level (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.levelHi : notificationDetails.levelEn}">National</dd>
+                <dt class="col-sm-3">Overview (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.overviewEn}"></dd>
 
-                <dt class="col-sm-4">Exam Type (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.typeHi : notificationDetails.typeEn}">Written, SSB, Medical</dd>
+                <dt class="col-sm-3">Overview (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.overviewHi}"></dd>
 
-                <dt class="col-sm-4">Exam Frequency (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.frequencyHi : notificationDetails.frequencyEn}">Once a year</dd>
+                <dt class="col-sm-3">Conducting Authority (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.authorityEn}"></dd>
 
-                <dt class="col-sm-4">Mode of Application (English)</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.applicationModeHi : notificationDetails.applicationModeEn}">Online</dd>
+                <dt class="col-sm-3">Conducting Authority (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.authorityHi}"></dd>
 
-                <dt class="col-sm-4">Exam Mode</dt>
-                <dd class="col-sm-8" th:text="${notificationDetails.examModeEn}">Online / Offline</dd>
+                <dt class="col-sm-3">Exam Level (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.levelEn}"></dd>
 
-                <dt class="col-sm-4">Official Website (English)</dt>
-                <dd class="col-sm-8"><a th:href="${notificationDetails.officialWebsiteEn}" target="_blank" class="btn-link">Visit Website</a></dd>
+                <dt class="col-sm-3">Exam Level (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.levelHi}"></dd>
 
-                <dt class="col-sm-4">Notification PDF Link (English)</dt>
-                <dd class="col-sm-8"><a th:href="${notificationDetails.notificationPdfLinkEn}" target="_blank" class="btn-link">Download PDF</a></dd>
+                <dt class="col-sm-3">Exam Type (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.typeEn}"></dd>
+
+                <dt class="col-sm-3">Exam Type (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.typeHi}"></dd>
+
+                <dt class="col-sm-3">Exam Frequency (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.frequencyEn}"></dd>
+
+                <dt class="col-sm-3">Exam Frequency (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.frequencyHi}"></dd>
+
+                <dt class="col-sm-3">Mode of Application (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.applicationModeEn}"></dd>
+
+                <dt class="col-sm-3">Mode of Application (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.applicationModeHi}"></dd>
+
+                <dt class="col-sm-3">Exam Mode (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.examModeEn}"></dd>
+
+                <dt class="col-sm-3">Exam Mode (Hindi)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.basicExamInfoDto.examModeHi}"></dd>
+
+                <dt class="col-sm-3">Official Website (English)</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.basicExamInfoDto.officialWebsiteEn}" th:text="${notificationDetails.basicExamInfoDto.officialWebsiteEn}"></a></dd>
+
+                <dt class="col-sm-3">Official Website (Hindi)</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.basicExamInfoDto.officialWebsiteHi}" th:text="${notificationDetails.basicExamInfoDto.officialWebsiteHi}"></a></dd>
+
+                <dt class="col-sm-3">Notification PDF Link (English)</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.basicExamInfoDto.notificationPdfLinkEn}" th:text="${notificationDetails.basicExamInfoDto.notificationPdfLinkEn}"></a></dd>
+
+                <dt class="col-sm-3">Notification PDF Link (Hindi)</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.basicExamInfoDto.notificationPdfLinkHi}" th:text="${notificationDetails.basicExamInfoDto.notificationPdfLinkHi}"></a></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Important Dates -->
+        <section class="mb-4">
+            <h3>Important Dates</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Application Start Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.applicationStartDate}"></dd>
 
-        <section>
-            <h3>📆 Important Dates</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Notification Release Date</dt>
-                <dd class="col-sm-8">01 Jan 2025</dd>
+                <dt class="col-sm-3">Application End Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.applicationEndDate}"></dd>
 
-                <dt class="col-sm-4">Application Start Date</dt>
-                <dd class="col-sm-8">05 Jan 2025</dd>
+                <dt class="col-sm-3">Application Correction Window</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.applicationCorrectionWindow}"></dd>
 
-                <dt class="col-sm-4">Application End Date</dt>
-                <dd class="col-sm-8">25 Jan 2025</dd>
+                <dt class="col-sm-3">Admit Card Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.admitCardDate}"></dd>
 
-                <dt class="col-sm-4">Application Correction Window</dt>
-                <dd class="col-sm-8">10-15 Jan 2025</dd>
+                <dt class="col-sm-3">Written Exam Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.writtenExamDate}"></dd>
 
-                <dt class="col-sm-4">Admit Card Release Date</dt>
-                <dd class="col-sm-8">10 Feb 2025</dd>
+                <dt class="col-sm-3">Result Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.resultDate}"></dd>
 
-                <dt class="col-sm-4">Written Exam Date</dt>
-                <dd class="col-sm-8">20 Feb 2025</dd>
+                <dt class="col-sm-3">SSB Interview Start Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.ssbInterviewStart}"></dd>
 
-                <dt class="col-sm-4">Result Declaration Date</dt>
-                <dd class="col-sm-8">15 Mar 2025</dd>
-
-                <dt class="col-sm-4">SSB Interview Dates</dt>
-                <dd class="col-sm-8">April 2025</dd>
-
-                <dt class="col-sm-4">Final Merit List Date</dt>
-                <dd class="col-sm-8">May 2025</dd>
+                <dt class="col-sm-3">Final Merit List Date</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.importantDatesDto.finalMeritListDate}"></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Eligibility Criteria -->
+        <section class="mb-4">
+            <h3>Eligibility Criteria</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Nationality (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.nationalityEn}"></dd>
 
-        <section>
-            <h3>📋 Eligibility Criteria</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Nationality</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.nationalityHi : notificationDetails.nationalityEn}">Indian</dd>
+                <dt class="col-sm-3">Age Limit (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.ageLimitEn}"></dd>
 
-                <dt class="col-sm-4">Age Limit</dt>
-                <dd class="col-sm-8">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Gender</th>
-                                <th>Category</th>
-                                <th>Age Limit</th>
-                                <th>Relaxation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="ageLimit : ${notificationDetails.ageLimits}">
-                                <td th:text="${ageLimit.gender}">Male</td>
-                                <td th:text="${ageLimit.category}">General</td>
-                                <td th:text="${ageLimit.ageLimit}">16.5 to 19.5 years</td>
-                                <td th:text="${ageLimit.relaxation}">None</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </dd>
+                <dt class="col-sm-3">Gender Eligibility (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.genderEligibilityEn}"></dd>
 
-                <dt class="col-sm-4">Gender Eligibility</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.genderEligibilityHi : notificationDetails.genderEligibilityEn}">Male / Female</dd>
+                <dt class="col-sm-3">Educational Qualifications (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.educationalQualificationsEn}"></dd>
 
-                <dt class="col-sm-4">Educational Qualification</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.educationalQualificationHi : notificationDetails.educationalQualificationEn}">12th Pass / Appearing</dd>
+                <dt class="col-sm-3">Physical Standards (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.physicalStandardsEn}"></dd>
 
-                <dt class="col-sm-4">Physical Standards</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.physicalStandardsHi : notificationDetails.physicalStandardsEn}">As per guidelines</dd>
+                <dt class="col-sm-3">Marital Status (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.maritalStatusEn}"></dd>
 
-                <dt class="col-sm-4">Marital Status</dt>
-                <dd class="col-sm-8" th:text="${lang == 'hi' ? notificationDetails.maritalStatusHi : notificationDetails.maritalStatusEn}">Unmarried</dd>
-
-                <dt class="col-sm-4">Minimum Height / Chest / Weight</dt>
-                <dd class="col-sm-8">
-                    <ul>
-                        <li th:each="item : ${notificationDetails.minHeightChestWeight}" th:text="${item}">As applicable</li>
-                    </ul>
-                </dd>
+                <dt class="col-sm-3">Height Requirement (English)</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.eligibilityCriteriaDto.heightRequirementEn}"></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
-
-        <section>
-            <h3>📑 Vacancy Details</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Total Number of Vacancies</dt>
-                <dd class="col-sm-8">1000</dd>
-
-                <dt class="col-sm-4">Category-Wise Vacancy</dt>
-                <dd class="col-sm-8">UR: 500, OBC: 300, SC: 150, ST: 50</dd>
-
-                <dt class="col-sm-4">Post/Branch/Trade-Wise Vacancy</dt>
-                <dd class="col-sm-8">Technical, Non-Technical, Ground Duty</dd>
+        <!-- Vacancy Details -->
+        <section class="mb-4">
+            <h3>Vacancy Details</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Total Vacancies</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.vacancyDetailsDto.totalVacancies}"></dd>
+                <!-- Post-wise and Category-wise vacancies can be displayed as lists or tables if needed -->
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Application Fee -->
+        <section class="mb-4">
+            <h3>Application Fee</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Fee Amount</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.applicationFeeDto.feeAmount}"></dd>
 
-        <section>
-            <h3>💰 Application Fee</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Fee Amount</dt>
-                <dd class="col-sm-8">₹ 200</dd>
-
-                <dt class="col-sm-4">Category-wise Fee</dt>
-                <dd class="col-sm-8">UR/OBC/SC/ST/Female</dd>
-
-                <dt class="col-sm-4">Payment Mode</dt>
-                <dd class="col-sm-8">Online – Debit/Credit/UPI/NetBanking</dd>
+                <dt class="col-sm-3">Payment Mode</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.applicationFeeDto.paymentMode}"></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Selection Process -->
+        <section class="mb-4">
+            <h3>Selection Process</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Written Test</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.selectionProcessDto.writtenTest}"></dd>
 
-        <section>
-            <h3>🧭 Selection Process</h3>
-            <ol class="timeline">
-                <li class="timeline-item">Stage 1: Written Test</li>
-                <li class="timeline-item">Stage 2: SSB Interview</li>
-                <li class="timeline-item">Stage 3: Document Verification</li>
-                <li class="timeline-item">Stage 4: Medical Examination</li>
-                <li class="timeline-item">Stage 5: Final Merit</li>
-            </ol>
-            <p>Add flowchart or visual timeline if needed</p>
-        </section>
+                <dt class="col-sm-3">SSB Interview</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.selectionProcessDto.ssbInterview}"></dd>
 
-        <div class="section-divider"></div>
+                <dt class="col-sm-3">Document Verification</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.selectionProcessDto.documentVerification}"></dd>
 
-        <section>
-            <h3>📚 Exam Pattern</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Number of Papers</dt>
-                <dd class="col-sm-8">2</dd>
+                <dt class="col-sm-3">Medical Examination</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.selectionProcessDto.medicalExamination}"></dd>
 
-                <dt class="col-sm-4">Subject-wise Paper Details</dt>
-                <dd class="col-sm-8">English, Mathematics</dd>
-
-                <dt class="col-sm-4">Duration of Each Paper</dt>
-                <dd class="col-sm-8">2 hours</dd>
-
-                <dt class="col-sm-4">Total Marks</dt>
-                <dd class="col-sm-8">600</dd>
-
-                <dt class="col-sm-4">Negative Marking</dt>
-                <dd class="col-sm-8">Yes</dd>
-
-                <dt class="col-sm-4">Minimum Qualifying Marks</dt>
-                <dd class="col-sm-8">40%</dd>
+                <dt class="col-sm-3">Final Merit</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.selectionProcessDto.finalMerit}"></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Exam Pattern -->
+        <section class="mb-4">
+            <h3>Exam Pattern</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Number of Papers</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.numberOfPapers}"></dd>
 
-        <section>
-            <h3>📖 Syllabus</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">English</dt>
-                <dd class="col-sm-8">Grammar, Comprehension</dd>
+                <dt class="col-sm-3">Subject-wise Paper Details</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.subjectWisePaperDetails}"></dd>
 
-                <dt class="col-sm-4">Mathematics</dt>
-                <dd class="col-sm-8">Algebra, Geometry</dd>
+                <dt class="col-sm-3">Duration of Each Paper</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.durationOfEachPaper}"></dd>
 
-                <dt class="col-sm-4">General Knowledge</dt>
-                <dd class="col-sm-8">Current Affairs, History</dd>
+                <dt class="col-sm-3">Total Marks</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.totalMarks}"></dd>
 
-                <dt class="col-sm-4">Reasoning</dt>
-                <dd class="col-sm-8">Logical Reasoning, Puzzles</dd>
+                <dt class="col-sm-3">Negative Marking</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.negativeMarking}"></dd>
 
-                <dt class="col-sm-4">Technical Subjects</dt>
-                <dd class="col-sm-8">Physics, Chemistry</dd>
-
-                <dt class="col-sm-4">Download Syllabus PDF</dt>
-                <dd class="col-sm-8"><a href="#" target="_blank" class="btn-link">Download PDF</a></dd>
+                <dt class="col-sm-3">Minimum Qualifying Marks</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.examPatternDto.minimumQualifyingMarks}"></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Syllabus -->
+        <section class="mb-4">
+            <h3>Syllabus</h3>
+            <dl class="row">
+                <dt class="col-sm-3">English Topics</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.syllabusDto.englishTopics}"></dd>
 
-        <section>
-            <h3>🛠️ Physical & Medical Standards</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Running Time & Distance</dt>
-                <dd class="col-sm-8">5 km in 25 minutes</dd>
+                <dt class="col-sm-3">Mathematics Topics</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.syllabusDto.mathematicsTopics}"></dd>
 
-                <dt class="col-sm-4">Pushups, Situps, Chinups Requirements</dt>
-                <dd class="col-sm-8">20 pushups, 30 situps</dd>
+                <dt class="col-sm-3">General Knowledge Topics</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.syllabusDto.generalKnowledgeTopics}"></dd>
 
-                <dt class="col-sm-4">Eye Sight, Color Blindness, Tattoos Policy</dt>
-                <dd class="col-sm-8">Normal eyesight required</dd>
+                <dt class="col-sm-3">Reasoning Topics</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.syllabusDto.reasoningTopics}"></dd>
 
-                <dt class="col-sm-4">Medical Tests List</dt>
-                <dd class="col-sm-8">Blood test, X-ray</dd>
+                <dt class="col-sm-3">Technical Subjects Topics</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.syllabusDto.technicalSubjectsTopics}"></dd>
 
-                <dt class="col-sm-4">Download Physical Standards PDF</dt>
-                <dd class="col-sm-8"><a href="#" target="_blank" class="btn-link">Download PDF</a></dd>
+                <dt class="col-sm-3">Syllabus PDF Link</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.syllabusDto.syllabusPdfLink}" th:text="${notificationDetails.syllabusDto.syllabusPdfLink}"></a></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Physical & Medical Standards -->
+        <section class="mb-4">
+            <h3>Physical & Medical Standards</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Running Time & Distance</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.physicalMedicalStandardsDto.runningTimeAndDistance}"></dd>
 
-        <section>
-            <h3>📤 Documents Required</h3>
-            <dl class="row info-list">
-                <dt class="col-sm-4">Photo/Signature Guidelines</dt>
-                <dd class="col-sm-8">Passport size photo, scanned signature</dd>
+                <dt class="col-sm-3">Pushups, Situps, Chinups</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.physicalMedicalStandardsDto.pushupsSitupsChinupsRequirements}"></dd>
 
-                <dt class="col-sm-4">ID Proof Requirements</dt>
-                <dd class="col-sm-8">Aadhar Card, Voter ID</dd>
+                <dt class="col-sm-3">Vision & Tattoos Policy</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.physicalMedicalStandardsDto.eyeSightColorBlindnessTattoosPolicy}"></dd>
 
-                <dt class="col-sm-4">Caste Certificate</dt>
-                <dd class="col-sm-8">If applicable</dd>
+                <dt class="col-sm-3">Medical Tests List</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.physicalMedicalStandardsDto.medicalTestsList}"></dd>
 
-                <dt class="col-sm-4">Domicile / NCC Certificate / Sports Quota Documents</dt>
-                <dd class="col-sm-8">If applicable</dd>
+                <dt class="col-sm-3">Physical Standards PDF Link</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.physicalMedicalStandardsDto.physicalStandardsPdfLink}" th:text="${notificationDetails.physicalMedicalStandardsDto.physicalStandardsPdfLink}"></a></dd>
             </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- Documents Required -->
+        <section class="mb-4">
+            <h3>Documents Required</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Photo/Signature Guidelines</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.documentsRequiredDto.photoSignatureGuidelines}"></dd>
 
-        <section>
-            <h3>🧾 How to Apply</h3>
-            <ol>
-                <li>Step 1: Visit official website</li>
-                <li>Step 2: Register online</li>
-                <li>Step 3: Fill application form</li>
-                <li>Step 4: Upload documents</li>
-                <li>Step 5: Submit application</li>
-            </ol>
-            <p><a href="#" target="_blank" class="btn-link">Go to Application Page</a></p>
+                <dt class="col-sm-3">ID Proof Requirements</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.documentsRequiredDto.idProofRequirements}"></dd>
+
+                <dt class="col-sm-3">Caste Certificate</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.documentsRequiredDto.casteCertificate}"></dd>
+
+                <dt class="col-sm-3">Additional Documents</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.documentsRequiredDto.domicileNccSportsQuotaDocuments}"></dd>
+            </dl>
         </section>
 
-        <div class="section-divider"></div>
+        <!-- How to Apply -->
+        <section class="mb-4">
+            <h3>How to Apply</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Step-by-Step Procedure</dt>
+                <dd class="col-sm-9" th:text="${notificationDetails.howToApplyDto.stepByStepProcedure}"></dd>
 
-        <section>
-            <h3>📌 Important Links</h3>
-            <ul>
-                <li><a href="#" target="_blank" class="btn-link">Notification PDF</a></li>
-                <li><a href="#" target="_blank" class="btn-link">Apply Online Link</a></li>
-                <li><a href="#" target="_blank" class="btn-link">Admit Card Download</a></li>
-                <li><a href="https://www.upsc.gov.in" target="_blank" class="btn-link">Official Website</a></li>
-                <li><a href="#" target="_blank" class="btn-link">Previous Year Papers</a></li>
-                <li><a href="#" target="_blank" class="btn-link">FAQs Section</a></li>
-            </ul>
+                <dt class="col-sm-3">Visual Demo Link</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.howToApplyDto.screenshotVisualDemoLink}" th:text="${notificationDetails.howToApplyDto.screenshotVisualDemoLink}"></a></dd>
+
+                <dt class="col-sm-3">Application Page Link</dt>
+                <dd class="col-sm-9"><a th:href="${notificationDetails.howToApplyDto.applicationPageLink}" th:text="${notificationDetails.howToApplyDto.applicationPageLink}"></a></dd>
+            </dl>
         </section>
 
-        <div class="section-divider"></div>
-
-        <section>
-            <h3>💬 FAQs Section</h3>
-            <div>
-                <div>
-                    <p class="faq-question" onclick="toggleFaqAnswer('faq1')">Q1: What is the eligibility criteria?</p>
-                    <p id="faq1" class="faq-answer">A1: Eligibility criteria include nationality, age limit, educational qualification, and physical standards.</p>
-                </div>
-                <div>
-                    <p class="faq-question" onclick="toggleFaqAnswer('faq2')">Q2: How to apply online?</p>
-                    <p id="faq2" class="faq-answer">A2: Visit the official website and follow the step-by-step application process.</p>
-                </div>
-                <!-- Add more FAQs as needed -->
-            </div>
-        </section>
+        <div class="mt-4">
+            <a href="/notifications" class="btn btn-secondary">Back to Notifications</a>
+        </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

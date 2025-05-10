@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class NotificationDetailsDto {
-
+    private Long id;
     private BasicExamInfoDto basicExamInfoDto = new BasicExamInfoDto();
     private ImportantDatesDto importantDatesDto = new ImportantDatesDto();
     private EligibilityCriteriaDto eligibilityCriteriaDto = new EligibilityCriteriaDto();
