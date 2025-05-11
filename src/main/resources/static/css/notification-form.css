@@ -26,12 +26,16 @@
 .form-floating textarea {
     border-radius: 8px;
     border: 1px solid #ccc;
+
 }
+
+
 
 /* Label and icon styling */
 .form-floating label {
     padding-left: 2.5rem;
 }
+
 
 .form-floating i {
     position: absolute;
@@ -40,6 +44,9 @@
     transform: translateY(-50%);
     color: #6c757d;
 }
+
+
+
 
 /* Form focus state */
 .form-control:focus {

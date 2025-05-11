@@ -33,9 +33,7 @@ public class BasicExamInfoDto {
     private String examModeEn;
     private String examModeHi;
 
-    private String officialWebsiteEn;
-    private String officialWebsiteHi;
+    private String officialWebsite;
 
-    private String notificationPdfLinkEn;
-    private String notificationPdfLinkHi;
+    private String notificationPdfLink;
 }

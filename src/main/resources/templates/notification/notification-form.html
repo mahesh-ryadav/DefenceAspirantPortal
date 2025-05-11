@@ -32,8 +32,8 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <input type="text" id="basicExamInfoDto_examTitleEn" name="basicExamInfoDto.examTitleEn"
-                    class="form-control" th:field="*{basicExamInfoDto.examTitleEn}"
-                    placeholder="Enter exam title in English" />
+                    class="form-control" th:field="*{basicExamInfoDto.examTitleEn}" placeholder="Enter exam title in English"
+                    required />
                 <label for="basicExamInfoDto_examTitleEn"><i class="fas fa-heading me-2"></i>Exam Title (English)</label>
                 <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examTitleEn}"></div>
             </div>
@@ -41,7 +41,7 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <input type="text" class="form-control" th:field="*{basicExamInfoDto.examTitleHi}"
-                    placeholder="Enter exam title in Hindi" />
+                    placeholder="Enter exam title in Hindi" required />
                 <label><i class="fas fa-heading me-2"></i>Exam Title (Hindi)</label>
                 <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examTitleHi}"></div>
             </div>
@@ -53,7 +53,7 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <textarea class="form-control" th:field="*{basicExamInfoDto.overviewEn}"
-                    placeholder="Enter overview in English" style="height: 100px"></textarea>
+                    placeholder="Enter overview in English" style="height: 100px" maxlength="2000" ></textarea>
                 <label><i class="fas fa-align-left me-2"></i>Overview (English)</label>
                 <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.overviewEn}"></div>
             </div>
@@ -61,159 +61,231 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <textarea class="form-control" th:field="*{basicExamInfoDto.overviewHi}"
-                    placeholder="Enter overview in Hindi" style="height: 100px"></textarea>
+                    placeholder="Enter overview in Hindi" style="height: 100px" maxlength="2000"></textarea>
                 <label><i class="fas fa-align-left me-2"></i>Overview (Hindi)</label>
                 <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.overviewHi}"></div>
             </div>
         </div>
     </div>
 
-    <!-- Conducting Authority -->
-    <div class="row g-4 mt-2">
-        <div class="col-md-6">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.authorityEn}"
-                    placeholder="Enter conducting authority in English" />
-                <label><i class="fas fa-university me-2"></i>Conducting Authority (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.authorityHi}"
-                    placeholder="Enter conducting authority in Hindi" />
-                <label><i class="fas fa-university me-2"></i>Conducting Authority (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityHi}"></div>
-            </div>
+  <!-- Conducting Authority -->
+<div class="row g-4 mt-2">
+    <div class="col-md-6">
+        <div class="form-floating">
+            <select class="form-select" th:field="*{basicExamInfoDto.authorityEn}" required>
+                <option value="">Select Conducting Authority</option>
+                <option value="UPSC">UPSC - Union Public Service Commission</option>
+                <option value="NDA">NDA - National Defence Academy</option>
+                <option value="CDS">CDS - Combined Defence Services</option>
+                <option value="TES">TES - Technical Entry Scheme (Army)</option>
+                <option value="AFCAT">AFCAT - Air Force Common Admission Test</option>
+                <option value="INET">INET - Indian Navy Entrance Test</option>
+                <option value="DRDO">DRDO - Defence Research and Development Organisation</option>
+                <option value="CEPTAM">CEPTAM - Centre for Personnel Talent Management</option>
+                <option value="SSR">SSR - Senior Secondary Recruit (Navy)</option>
+                <option value="CASB">CASB - Central Airmen Selection Board</option>
+                <option value="TA">TA - Territorial Army</option>
+            </select>
+            <label><i class="fas fa-university me-2"></i>Conducting Authority (English)</label>
+            <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityEn}"></div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="form-floating">
+            <select class="form-select" th:field="*{basicExamInfoDto.authorityHi}" required>
+                <option value="">संचालन प्राधिकरण चुनें</option>
+                <option value="UPSC">यूपीएससी - संघ लोक सेवा आयोग</option>
+                <option value="NDA">एनडीए - राष्ट्रीय रक्षा अकादमी</option>
+                <option value="CDS">सीडीएस - संयुक्त रक्षा सेवाएं</option>
+                <option value="TES">टीईएस - तकनीकी प्रवेश योजना (थलसेना)</option>
+                <option value="AFCAT">एएफसीएटी - वायु सेना सामान्य प्रवेश परीक्षा</option>
+                <option value="INET">आईएनईटी - भारतीय नौसेना प्रवेश परीक्षा</option>
+                <option value="DRDO">डीआरडीओ - रक्षा अनुसंधान एवं विकास संगठन</option>
+                <option value="CEPTAM">सेप्टम - कार्मिक प्रतिभा प्रबंधन केंद्र</option>
+                <option value="SSR">एसएसआर - वरिष्ठ माध्यमिक भर्ती (नौसेना)</option>
+                <option value="CASB">सीएएसबी - केंद्रीय एयरमेन चयन बोर्ड</option>
+                <option value="TA">टीए - टेरिटोरियल आर्मी</option>
+            </select>
+            <label><i class="fas fa-university me-2"></i>संचालन प्राधिकरण (हिंदी)</label>
+            <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.authorityHi}"></div>
+        </div>
+    </div>
+</div>
 
     <div class="row g-4 mt-2">
         <!-- Exam Level -->
         <div class="col-md-6">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.levelEn}"
-                    placeholder="Enter exam level in English" />
-                <label><i class="fas fa-layer-group me-2"></i>Exam Level (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.levelHi}"
-                    placeholder="Enter exam level in Hindi" />
-                <label><i class="fas fa-layer-group me-2"></i>Exam Level (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelHi}"></div>
-            </div>
-        </div>
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.levelEn}" required>
+            <option value="">Select Exam Level</option>
+            <option value="NATIONAL">National Level</option>
+            <option value="STATE">State Level</option>
+            <option value="ZONAL">Zonal Level</option>
+            <option value="DEPARTMENTAL">Departmental Level</option>
+        </select>
+        <label><i class="fas fa-layer-group me-2"></i>Exam Level (English)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelEn}"></div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.levelHi}" required>
+            <option value="">परीक्षा स्तर चुनें</option>
+            <option value="NATIONAL">राष्ट्रीय स्तर</option>
+            <option value="STATE">राज्य स्तर</option>
+            <option value="ZONAL">क्षेत्रीय स्तर</option>
+            <option value="DEPARTMENTAL">विभागीय स्तर</option>
+        </select>
+        <label><i class="fas fa-layer-group me-2"></i>परीक्षा स्तर (हिंदी)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.levelHi}"></div>
+    </div>
+</div>
 
         <!-- Exam Type -->
         <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.typeEn}"
-                    placeholder="Enter exam type in English" />
-                <label><i class="fas fa-tag me-2"></i>Exam Type (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.typeHi}"
-                    placeholder="Enter exam type in Hindi" />
-                <label><i class="fas fa-tag me-2"></i>Exam Type (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeHi}"></div>
-            </div>
-        </div>
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.typeEn}" required>
+            <option value="">Select Exam Type</option>
+            <option value="Written Exam">Written Examination</option>
+            <option value="SSB Interview">SSB Interview</option>
+            <option value="Physical Test">Physical Fitness Test</option>
+            <option value="Medical Exam">Medical Examination</option>
+            <option value="Technical Entry">Technical Entry Scheme</option>
+            <option value="Agniveer">Agniveer Recruitment</option>
+            <option value="CDS">Combined Defence Services (CDS)</option>
+            <option value="NDA">National Defence Academy (NDA)</option>
+            <option value="AFCAT">Air Force Common Admission Test</option>
+            <option value="Direct Entry">Direct Entry Scheme</option>
+        </select>
+        <label><i class="fas fa-tag me-2"></i>Exam Type (English)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeEn}"></div>
+    </div>
+</div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.typeHi}" required>
+            <option value="">परीक्षा प्रकार चुनें</option>
+            <option value="लिखित परीक्षा">लिखित परीक्षा (Written Exam)</option>
+            <option value="एसएसबी साक्षात्कार">एसएसबी साक्षात्कार (SSB Interview)</option>
+            <option value="शारीरिक परीक्षण">शारीरिक परीक्षण (Physical Test)</option>
+            <option value="चिकित्सा परीक्षा">चिकित्सा परीक्षा (Medical Exam)</option>
+            <option value="तकनीकी प्रवेश">तकनीकी प्रवेश योजना (Technical Entry)</option>
+            <option value="अग्निवीर">अग्निवीर भर्ती (Agniveer)</option>
+            <option value="सीडीएस">संयुक्त रक्षा सेवा (CDS)</option>
+            <option value="एनडीए">राष्ट्रीय रक्षा अकादमी (NDA)</option>
+            <option value="एएफसीएटी">वायु सेना सामान्य प्रवेश परीक्षा (AFCAT)</option>
+            <option value="प्रत्यक्ष प्रवेश">प्रत्यक्ष प्रवेश योजना (Direct Entry)</option>
+        </select>
+        <label><i class="fas fa-tag me-2"></i>परीक्षा प्रकार (हिंदी)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.typeHi}"></div>
+    </div>
+</div>
 
         <!-- Exam Frequency -->
         <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.frequencyEn}"
-                    placeholder="Enter exam frequency in English" />
-                <label><i class="fas fa-sync-alt me-2"></i>Exam Frequency (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.frequencyHi}"
-                    placeholder="Enter exam frequency in Hindi" />
-                <label><i class="fas fa-sync-alt me-2"></i>Exam Frequency (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyHi}"></div>
-            </div>
-        </div>
-
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.frequencyEn}" required>
+            <option value="">Select Frequency</option>
+            <option value="Annual">Annual</option>
+            <option value="Biannual">Biannual</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="As Needed">As Needed</option>
+            <option value="One-Time">One-Time</option>
+        </select>
+        <label><i class="fas fa-sync-alt me-2"></i>Exam Frequency (English)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyEn}"></div>
+    </div>
+</div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.frequencyHi}" required>
+            <option value="">आवृत्ति चुनें</option>
+            <option value="वार्षिक">वार्षिक (Annual)</option>
+            <option value="अर्ध-वार्षिक">अर्ध-वार्षिक (Biannual)</option>
+            <option value="त्रैमासिक">त्रैमासिक (Quarterly)</option>
+            <option value="आवश्यकतानुसार">आवश्यकतानुसार (As Needed)</option>
+            <option value="एक बार">एक बार (One-Time)</option>
+        </select>
+        <label><i class="fas fa-sync-alt me-2"></i>परीक्षा आवृत्ति (हिंदी)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.frequencyHi}"></div>
+    </div>
+</div>
         <!-- Mode of Application -->
         <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.applicationModeEn}"
-                    placeholder="Enter mode of application in English" />
-                <label><i class="fas fa-laptop me-2"></i>Mode of Application (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.applicationModeHi}"
-                    placeholder="Enter mode of application in Hindi" />
-                <label><i class="fas fa-laptop me-2"></i>Mode of Application (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeHi}"></div>
-            </div>
-        </div>
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.applicationModeEn}" required>
+            <option value="">Select Application Mode</option>
+            <option value="ONLINE">Online</option>
+            <option value="OFFLINE">Offline</option>
+            <option value="HYBRID">Hybrid (Online + Offline)</option>
+        </select>
+        <label><i class="fas fa-laptop me-2"></i>Mode of Application (English)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeEn}"></div>
+    </div>
+</div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.applicationModeHi}" required>
+            <option value="">आवेदन का तरीका चुनें</option>
+            <option value="ऑनलाइन">ऑनलाइन (Online)</option>
+            <option value="ऑफलाइन">ऑफलाइन (Offline)</option>
+            <option value="हाइब्रिड">हाइब्रिड (Hybrid)</option>
+        </select>
+        <label><i class="fas fa-laptop me-2"></i>आवेदन का तरीका (हिंदी)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.applicationModeHi}"></div>
+    </div>
+</div>
 
         <!-- Exam Mode -->
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.examModeEn}"
-                    placeholder="Enter exam mode in English" />
-                <label><i class="fas fa-desktop me-2"></i>Exam Mode (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="text" class="form-control" th:field="*{basicExamInfoDto.examModeHi}"
-                    placeholder="Enter exam mode in Hindi" />
-                <label><i class="fas fa-desktop me-2"></i>Exam Mode (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeHi}"></div>
-            </div>
-        </div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.examModeEn}" required>
+            <option value="">Select Exam Mode</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+            <option value="Hybrid">Hybrid (Online + Offline)</option>
+        </select>
+        <label><i class="fas fa-desktop me-2"></i>Exam Mode (English)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeEn}"></div>
+    </div>
+</div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <select class="form-select" th:field="*{basicExamInfoDto.examModeHi}" required>
+            <option value="">परीक्षा मोड चुनें</option>
+            <option value="ऑनलाइन">ऑनलाइन (Online)</option>
+            <option value="ऑफलाइन">ऑफलाइन (Offline)</option>
+            <option value="हाइब्रिड">हाइब्रिड (Hybrid)</option>
+        </select>
+        <label><i class="fas fa-desktop me-2"></i>परीक्षा मोड (हिंदी)</label>
+        <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.examModeHi}"></div>
+    </div>
+</div>
 
         <!-- Official Website -->
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="url" class="form-control" th:field="*{basicExamInfoDto.officialWebsiteEn}"
-                    placeholder="Enter official website in English" />
-                <label><i class="fas fa-globe me-2"></i>Official Website (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.officialWebsiteEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="url" class="form-control" th:field="*{basicExamInfoDto.officialWebsiteHi}"
-                    placeholder="Enter official website in Hindi" />
-                <label><i class="fas fa-globe me-2"></i>Official Website (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.officialWebsiteHi}"></div>
-            </div>
-        </div>
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <input type="url" class="form-control" 
+               th:field="*{basicExamInfoDto.officialWebsite}"
+               placeholder="Enter official website URL" 
+               required />
+        <label><i class="fas fa-globe me-2"></i>Official Website</label>
+        <div class="text-danger mt-1 small" 
+             th:errors="*{basicExamInfoDto.officialWebsite}"></div>
+    </div>
+</div>
 
-        <!-- Notification PDF Links -->
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="url" class="form-control" th:field="*{basicExamInfoDto.notificationPdfLinkEn}"
-                    placeholder="Enter PDF link in English" />
-                <label><i class="fas fa-file-pdf me-2"></i>Notification PDF Link (English)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.notificationPdfLinkEn}"></div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3">
-            <div class="form-floating">
-                <input type="url" class="form-control" th:field="*{basicExamInfoDto.notificationPdfLinkHi}"
-                    placeholder="Enter PDF link in Hindi" />
-                <label><i class="fas fa-file-pdf me-2"></i>Notification PDF Link (Hindi)</label>
-                <div class="text-danger mt-1 small" th:errors="*{basicExamInfoDto.notificationPdfLinkHi}"></div>
-            </div>
-        </div>
+<!-- Notification PDF Links -->
+<div class="col-md-6 mt-3">
+    <div class="form-floating">
+        <input type="url" class="form-control" 
+               th:field="*{basicExamInfoDto.notificationPdfLink}"
+               placeholder="Enter PDF notification URL" 
+               required />
+        <label><i class="fas fa-file-pdf me-2"></i>Notification PDF Link</label>
+        <div class="text-danger mt-1 small" 
+             th:errors="*{basicExamInfoDto.notificationPdfLink}"></div>
     </div>
 </div>
 
@@ -246,7 +318,7 @@
             <!-- Correction Window -->
             <div class="form-floating mt-3">
                 <input type="text" class="form-control" th:field="*{importantDatesDto.applicationCorrectionWindow}"
-                       placeholder="Enter date range"/>
+                       placeholder="Enter date range" maxlength="100"/>
                 <label><i class="fas fa-edit me-2"></i>Application Correction Window</label>
                 <div class="text-danger mt-1 small" th:errors="*{importantDatesDto.applicationCorrectionWindow}"></div>
             </div>
@@ -410,6 +482,7 @@
         </div>
     </div>
 </div>
+
 
 
 

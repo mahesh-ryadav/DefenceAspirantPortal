@@ -72,16 +72,14 @@ public class BasicExamInfo {
     private String examModeHi;
 
     // Official Website
-    @NotBlank(message = "Official website (English) is required")
-    private String officialWebsiteEn;
+    @NotBlank(message = "Official website is required")
+    private String officialWebsite;
 
-    @NotBlank(message = "Official website (Hindi) is required")
-    private String officialWebsiteHi;
+
 
     // Notification PDF Link
-    @NotBlank(message = "PDF link (English) is required")
-    private String notificationPdfLinkEn;
+    @NotBlank(message = "PDF link is required")
+    private String notificationPdfLink;
 
-    @NotBlank(message = "PDF link (Hindi) is required")
-    private String notificationPdfLinkHi;
+    
 }
