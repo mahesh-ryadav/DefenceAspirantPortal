@@ -3,6 +3,8 @@ package com.softpro.DefenceAspirantPortal.Notification.NotificationController;
 import com.softpro.DefenceAspirantPortal.Notification.NotificationDto.NotificationDetailsDto;
 import com.softpro.DefenceAspirantPortal.Notification.NotificationService.NotificationDetailsService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +20,9 @@ public class NotificationDetailsController {
         this.notificationDetailsService = notificationDetailsService;
     }
 
+
     @GetMapping("/")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public String index() {
         return "index";
     }

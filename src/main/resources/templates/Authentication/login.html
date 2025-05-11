@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body {
+          background: linear-gradient(135deg, #f0f4f7, #d9e2ec);
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-card {
+          background-color: #ffffff;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+          padding: 40px;
+          width: 100%;
+          max-width: 400px;
+        }
+        .form-control {
+          border-radius: 8px;
+        }
+        .btn-custom {
+          border-radius: 8px;
+        }
+        .form-label {
+          font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card text-center">
+    <h2 class="text-primary mb-4">Student Login</h2>
+
+    <p class="text-danger fw-bold" id="error-message" style="display:none;"></p>
+
+    <form id="login-form" class="text-start">
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter your email..." required name="email">
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Enter your password..." required name="password">
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-custom">Login</button>
+        </div>
+    </form>
+
+    <div class="pt-3">
+        <p class="mb-0">Don't have an account? <a href="/">Register here</a></p>
+    </div>
+</div>
+
+<!-- JS for Fetch + Redirect -->
+<script>
+    document.getElementById("login-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    try {
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        console.log("Response status:", response.status); // Log response status
+        const data = await response.json();  // Parse the response JSON
+
+        // Check if response is OK
+        if (response.ok) {
+            // Save tokens in localStorage (or cookies if you prefer)
+            localStorage.setItem("accessToken", data.accessToken); // Save JWT
+            localStorage.setItem("refreshToken", data.refreshToken); // Save refresh token
+
+            // Redirect on successful login
+            window.location.href = "/"; // Or the appropriate redirect URL
+        } else {
+            const errorMsg = document.getElementById("error-message");
+            errorMsg.textContent = "Invalid email or password.";
+            errorMsg.style.display = "block";
+        }
+    } catch (error) {
+        console.error("Login failed:", error);
+        alert("An error occurred. Please try again.");
+    }
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
