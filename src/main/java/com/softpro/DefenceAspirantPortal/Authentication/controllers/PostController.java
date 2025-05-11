@@ -22,7 +22,7 @@ public class PostController {
     }
 
     @PostMapping
-    @Secured({"ROLE_USER"})
+    @PreAuthorize("hasRole('USER')")
     public PostDTO createNewPost( @RequestBody PostDTO inputPost){
         return postService.createNewPost(inputPost);
     }

@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDto signUp(@Valid SignUpDto userDto) {
-        System.out.println("hello bksdk");
         Optional<User> user1 =  userRepository.findByEmail(userDto.getEmail());
         if(user1.isPresent()){
             throw new BadCredentialsException("User with email is already present.");
@@ -44,7 +43,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userRepository.save(user);
-        System.out.println(user);
         return mapper.map(user, UserDto.class);
     }
 }

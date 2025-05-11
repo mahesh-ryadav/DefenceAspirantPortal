@@ -25,6 +25,7 @@ public class AdminInitializer implements CommandLineRunner {
         if (!userRepository.existsByEmail("admin@gmail.com")) {
             User admin = new User();
             admin.setEmail("admin@gmail.com");
+            admin.setName("Admin");
             admin.setPassword(passwordEncoder.encode("admin123"));
             Set<Role> roles = new HashSet<>();
             roles.add(Role.ADMIN); // Add ADMIN role

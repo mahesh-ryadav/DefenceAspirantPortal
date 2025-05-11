@@ -23,7 +23,7 @@ public class NotificationDetailsController {
 
 
     @GetMapping("/")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public String index() {
         return "index";
     }

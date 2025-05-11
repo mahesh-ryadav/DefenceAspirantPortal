@@ -28,7 +28,7 @@ public class User implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>(Set.of(Role.USER));
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -41,8 +41,15 @@ public class User implements UserDetails {
                 }
         );
         return authorities;
-
     }
+    @PrePersist
+    public void prePersist() {
+        if (roles == null || roles.isEmpty()) {
+            roles = new HashSet<>();
+            roles.add(Role.USER);
+        }
+    }
+
     @Override
     public String getUsername() {
         return this.email;
